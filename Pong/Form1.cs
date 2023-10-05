@@ -214,7 +214,7 @@ public partial class Form1 : Form
             if (pictureBox1.Location.X >= 0)
             {
                 // Mova o objeto 50 pixels para a esquerda.
-                pictureBox1.Left -= 20;
+                pictureBox1.Left -= 50;
             }
 
         }
@@ -225,7 +225,7 @@ public partial class Form1 : Form
             if (pictureBox1.Location.X <= 1150)
             {
                 // Mova o objeto 50 pixels para a direita.
-                pictureBox1.Left += 20;
+                pictureBox1.Left += 50;
             }
 
         }

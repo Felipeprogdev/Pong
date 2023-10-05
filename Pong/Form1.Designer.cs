@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            pictureBox1 = new PictureBox();
-            pictureBox2 = new PictureBox();
-            pictureBox3 = new PictureBox();
-            pictureBox4 = new PictureBox();
-            pictureBox5 = new PictureBox();
-            pictureBox6 = new PictureBox();
-            pictureBox7 = new PictureBox();
-            pictureBox8 = new PictureBox();
-            pictureBox9 = new PictureBox();
-            pictureBox10 = new PictureBox();
-            pictureBox11 = new PictureBox();
+            pbBar = new PictureBox();
+            pbFloor = new PictureBox();
+            pbBall = new PictureBox();
+            pbBlock1 = new PictureBox();
+            pbBlock2 = new PictureBox();
+            pbBlock3 = new PictureBox();
+            pbBlock4 = new PictureBox();
+            pbBlock5 = new PictureBox();
+            pbBlock6 = new PictureBox();
+            pbBlock7 = new PictureBox();
+            pbBlock8 = new PictureBox();
             start = new Button();
             label1 = new Label();
             label2 = new Label();
@@ -48,130 +48,130 @@
             button1 = new Button();
             buttondif = new Button();
             textodif = new Label();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) pbBar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) pbFloor).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) pbBall).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) pbBlock1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) pbBlock2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) pbBlock3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) pbBlock4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) pbBlock5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) pbBlock6).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) pbBlock7).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) pbBlock8).BeginInit();
             SuspendLayout();
             // 
-            // pictureBox1
+            // pbBar
             // 
-            pictureBox1.BackColor = SystemColors.ActiveCaptionText;
-            pictureBox1.Location = new Point(606, 685);
-            pictureBox1.Margin = new Padding(3, 2, 3, 2);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(199, 33);
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
+            pbBar.BackColor = SystemColors.ActiveCaptionText;
+            pbBar.Location = new Point(606, 685);
+            pbBar.Margin = new Padding(3, 2, 3, 2);
+            pbBar.Name = "pbBar";
+            pbBar.Size = new Size(199, 33);
+            pbBar.TabIndex = 0;
+            pbBar.TabStop = false;
             // 
-            // pictureBox2
+            // pbBackground
             // 
-            pictureBox2.BackColor = SystemColors.MenuHighlight;
-            pictureBox2.Location = new Point(0, 722);
-            pictureBox2.Margin = new Padding(3, 2, 3, 2);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(1371, 28);
-            pictureBox2.TabIndex = 1;
-            pictureBox2.TabStop = false;
+            pbFloor.BackColor = SystemColors.MenuHighlight;
+            pbFloor.Location = new Point(0, 722);
+            pbFloor.Margin = new Padding(3, 2, 3, 2);
+            pbFloor.Name = "pbBackground";
+            pbFloor.Size = new Size(1371, 28);
+            pbFloor.TabIndex = 1;
+            pbFloor.TabStop = false;
             // 
-            // pictureBox3
+            // pbBall
             // 
-            pictureBox3.BackColor = SystemColors.ButtonFace;
-            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(694, 194);
-            pictureBox3.Margin = new Padding(3, 2, 3, 2);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(29, 23);
-            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox3.TabIndex = 2;
-            pictureBox3.TabStop = false;
+            pbBall.BackColor = SystemColors.ButtonFace;
+            pbBall.Image = (Image) resources.GetObject("pbBall.Image");
+            pbBall.Location = new Point(694, 194);
+            pbBall.Margin = new Padding(3, 2, 3, 2);
+            pbBall.Name = "pbBall";
+            pbBall.Size = new Size(29, 23);
+            pbBall.SizeMode = PictureBoxSizeMode.Zoom;
+            pbBall.TabIndex = 2;
+            pbBall.TabStop = false;
             // 
-            // pictureBox4
+            // pbBlock1
             // 
-            pictureBox4.BackColor = SystemColors.ActiveCaptionText;
-            pictureBox4.Location = new Point(52, 2);
-            pictureBox4.Margin = new Padding(3, 2, 3, 2);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(107, 23);
-            pictureBox4.TabIndex = 3;
-            pictureBox4.TabStop = false;
+            pbBlock1.BackColor = SystemColors.ActiveCaptionText;
+            pbBlock1.Location = new Point(52, 2);
+            pbBlock1.Margin = new Padding(3, 2, 3, 2);
+            pbBlock1.Name = "pbBlock1";
+            pbBlock1.Size = new Size(107, 23);
+            pbBlock1.TabIndex = 3;
+            pbBlock1.TabStop = false;
             // 
-            // pictureBox5
+            // pbBlock2
             // 
-            pictureBox5.BackColor = SystemColors.ActiveCaptionText;
-            pictureBox5.Location = new Point(192, 2);
-            pictureBox5.Margin = new Padding(3, 2, 3, 2);
-            pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(107, 23);
-            pictureBox5.TabIndex = 4;
-            pictureBox5.TabStop = false;
+            pbBlock2.BackColor = SystemColors.ActiveCaptionText;
+            pbBlock2.Location = new Point(192, 2);
+            pbBlock2.Margin = new Padding(3, 2, 3, 2);
+            pbBlock2.Name = "pbBlock2";
+            pbBlock2.Size = new Size(107, 23);
+            pbBlock2.TabIndex = 4;
+            pbBlock2.TabStop = false;
             // 
-            // pictureBox6
+            // pbBlock3
             // 
-            pictureBox6.BackColor = SystemColors.ActiveCaptionText;
-            pictureBox6.Location = new Point(332, 2);
-            pictureBox6.Margin = new Padding(3, 2, 3, 2);
-            pictureBox6.Name = "pictureBox6";
-            pictureBox6.Size = new Size(107, 23);
-            pictureBox6.TabIndex = 5;
-            pictureBox6.TabStop = false;
+            pbBlock3.BackColor = SystemColors.ActiveCaptionText;
+            pbBlock3.Location = new Point(332, 2);
+            pbBlock3.Margin = new Padding(3, 2, 3, 2);
+            pbBlock3.Name = "pbBlock3";
+            pbBlock3.Size = new Size(107, 23);
+            pbBlock3.TabIndex = 5;
+            pbBlock3.TabStop = false;
             // 
-            // pictureBox7
+            // pbBlock4
             // 
-            pictureBox7.BackColor = SystemColors.ActiveCaptionText;
-            pictureBox7.Location = new Point(476, 2);
-            pictureBox7.Margin = new Padding(3, 2, 3, 2);
-            pictureBox7.Name = "pictureBox7";
-            pictureBox7.Size = new Size(107, 23);
-            pictureBox7.TabIndex = 6;
-            pictureBox7.TabStop = false;
+            pbBlock4.BackColor = SystemColors.ActiveCaptionText;
+            pbBlock4.Location = new Point(476, 2);
+            pbBlock4.Margin = new Padding(3, 2, 3, 2);
+            pbBlock4.Name = "pbBlock4";
+            pbBlock4.Size = new Size(107, 23);
+            pbBlock4.TabIndex = 6;
+            pbBlock4.TabStop = false;
             // 
-            // pictureBox8
+            // pbBlock5
             // 
-            pictureBox8.BackColor = SystemColors.ActiveCaptionText;
-            pictureBox8.Location = new Point(640, 2);
-            pictureBox8.Margin = new Padding(3, 2, 3, 2);
-            pictureBox8.Name = "pictureBox8";
-            pictureBox8.Size = new Size(107, 23);
-            pictureBox8.TabIndex = 7;
-            pictureBox8.TabStop = false;
+            pbBlock5.BackColor = SystemColors.ActiveCaptionText;
+            pbBlock5.Location = new Point(640, 2);
+            pbBlock5.Margin = new Padding(3, 2, 3, 2);
+            pbBlock5.Name = "pbBlock5";
+            pbBlock5.Size = new Size(107, 23);
+            pbBlock5.TabIndex = 7;
+            pbBlock5.TabStop = false;
             // 
-            // pictureBox9
+            // pbBlock6
             // 
-            pictureBox9.BackColor = SystemColors.ActiveCaptionText;
-            pictureBox9.Location = new Point(790, 2);
-            pictureBox9.Margin = new Padding(3, 2, 3, 2);
-            pictureBox9.Name = "pictureBox9";
-            pictureBox9.Size = new Size(107, 23);
-            pictureBox9.TabIndex = 8;
-            pictureBox9.TabStop = false;
+            pbBlock6.BackColor = SystemColors.ActiveCaptionText;
+            pbBlock6.Location = new Point(790, 2);
+            pbBlock6.Margin = new Padding(3, 2, 3, 2);
+            pbBlock6.Name = "pbBlock6";
+            pbBlock6.Size = new Size(107, 23);
+            pbBlock6.TabIndex = 8;
+            pbBlock6.TabStop = false;
             // 
-            // pictureBox10
+            // pbBlock7
             // 
-            pictureBox10.BackColor = SystemColors.ActiveCaptionText;
-            pictureBox10.Location = new Point(951, 2);
-            pictureBox10.Margin = new Padding(3, 2, 3, 2);
-            pictureBox10.Name = "pictureBox10";
-            pictureBox10.Size = new Size(107, 23);
-            pictureBox10.TabIndex = 9;
-            pictureBox10.TabStop = false;
+            pbBlock7.BackColor = SystemColors.ActiveCaptionText;
+            pbBlock7.Location = new Point(951, 2);
+            pbBlock7.Margin = new Padding(3, 2, 3, 2);
+            pbBlock7.Name = "pbBlock7";
+            pbBlock7.Size = new Size(107, 23);
+            pbBlock7.TabIndex = 9;
+            pbBlock7.TabStop = false;
             // 
-            // pictureBox11
+            // pbBlock8
             // 
-            pictureBox11.BackColor = SystemColors.ActiveCaptionText;
-            pictureBox11.Location = new Point(1133, 2);
-            pictureBox11.Margin = new Padding(3, 2, 3, 2);
-            pictureBox11.Name = "pictureBox11";
-            pictureBox11.Size = new Size(107, 23);
-            pictureBox11.TabIndex = 10;
-            pictureBox11.TabStop = false;
+            pbBlock8.BackColor = SystemColors.ActiveCaptionText;
+            pbBlock8.Location = new Point(1133, 2);
+            pbBlock8.Margin = new Padding(3, 2, 3, 2);
+            pbBlock8.Name = "pbBlock8";
+            pbBlock8.Size = new Size(107, 23);
+            pbBlock8.TabIndex = 10;
+            pbBlock8.TabStop = false;
             // 
             // start
             // 
@@ -266,50 +266,52 @@
             Controls.Add(label3);
             Controls.Add(label1);
             Controls.Add(start);
-            Controls.Add(pictureBox11);
-            Controls.Add(pictureBox10);
-            Controls.Add(pictureBox9);
-            Controls.Add(pictureBox8);
-            Controls.Add(pictureBox7);
-            Controls.Add(pictureBox6);
-            Controls.Add(pictureBox5);
-            Controls.Add(pictureBox4);
-            Controls.Add(pictureBox2);
-            Controls.Add(pictureBox1);
-            Controls.Add(pictureBox3);
+            Controls.Add(pbBlock8);
+            Controls.Add(pbBlock7);
+            Controls.Add(pbBlock6);
+            Controls.Add(pbBlock5);
+            Controls.Add(pbBlock4);
+            Controls.Add(pbBlock3);
+            Controls.Add(pbBlock2);
+            Controls.Add(pbBlock1);
+            Controls.Add(pbFloor);
+            Controls.Add(pbBar);
+            Controls.Add(pbBall);
             Controls.Add(label2);
             Margin = new Padding(3, 2, 3, 2);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             KeyDown += Form1_KeyDown;
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox11).EndInit();
+            Resize += Form1_Resize;
+            ((System.ComponentModel.ISupportInitialize) pbBar).EndInit();
+            ((System.ComponentModel.ISupportInitialize) pbFloor).EndInit();
+            ((System.ComponentModel.ISupportInitialize) pbBall).EndInit();
+            ((System.ComponentModel.ISupportInitialize) pbBlock1).EndInit();
+            ((System.ComponentModel.ISupportInitialize) pbBlock2).EndInit();
+            ((System.ComponentModel.ISupportInitialize) pbBlock3).EndInit();
+            ((System.ComponentModel.ISupportInitialize) pbBlock4).EndInit();
+            ((System.ComponentModel.ISupportInitialize) pbBlock5).EndInit();
+            ((System.ComponentModel.ISupportInitialize) pbBlock6).EndInit();
+            ((System.ComponentModel.ISupportInitialize) pbBlock7).EndInit();
+            ((System.ComponentModel.ISupportInitialize) pbBlock8).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private PictureBox pictureBox1;
-        private PictureBox pictureBox2;
-        private PictureBox pictureBox3;
-        private PictureBox pictureBox4;
-        private PictureBox pictureBox5;
-        private PictureBox pictureBox6;
-        private PictureBox pictureBox7;
-        private PictureBox pictureBox8;
-        private PictureBox pictureBox9;
-        private PictureBox pictureBox10;
-        private PictureBox pictureBox11;
+        private PictureBox pbBar;
+        private PictureBox pbFloor;
+        private PictureBox pbBall;
+        private PictureBox pbBlock1;
+        private PictureBox pbBlock2;
+        private PictureBox pbBlock3;
+        private PictureBox pbBlock4;
+        private PictureBox pbBlock5;
+        private PictureBox pbBlock6;
+        private PictureBox pbBlock7;
+        private PictureBox pbBlock8;
         private Button start;
         private Label label1;
         private Label label2;

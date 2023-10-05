@@ -1,15 +1,13 @@
-using System.Windows.Forms;
 namespace Pong;
 
 public partial class Form1 : Form
 {
     System.Windows.Forms.Timer meuTimer = new System.Windows.Forms.Timer();
 
-    /*Variaveis para rodar o timer e parar o eixo X e Y*/
-    int a = 0;
-    int x = 5;
-    int y = 5;
+    private PongLogic logic;
 
+    private float scaleX = 1;
+    private float scaleY = 1;
 
     public Form1()
     {
@@ -20,232 +18,135 @@ public partial class Form1 : Form
         meuTimer.Tick += new EventHandler(meuTimer_Tick);
 
         /*Abrir programa em tela cheia*/
-        this.WindowState = FormWindowState.Maximized;
+        //WindowState = FormWindowState.Maximized;
 
+        logic = new PongLogic();
+        logic.OutOfArena += OnOutOfArena;
+        logic.Win += OnWin;
+        logic.Stop += OnStop;
 
+        logic.bar.Tag = pbBar;
+        logic.ball.Tag = pbBall;
+        logic.floor.Tag = pbFloor;
+
+        logic.blocks[0].Tag = pbBlock1;
+        logic.blocks[1].Tag = pbBlock2;
+        logic.blocks[2].Tag = pbBlock3;
+        logic.blocks[3].Tag = pbBlock4;
+        logic.blocks[4].Tag = pbBlock5;
+        logic.blocks[5].Tag = pbBlock6;
+        logic.blocks[6].Tag = pbBlock7;
+        logic.blocks[7].Tag = pbBlock8;
+
+        for (int i = 0; i < 8; i++)
+            logic.blocks[i].ChangeVisibility += OnChangeVisibility;
     }
 
+    private void OnChangeVisibility(Entity entity)
+    {
+        var tag = (PictureBox) entity.Tag;
+        tag.Visible = entity.Visible;
+    }
+
+    private void OnChangeLocation(Entity entity)
+    {
+        var tag = (PictureBox) entity.Tag;
+        tag.Location = LogicPoint2Client(entity.Location);
+    }
+
+    private void OnChangeSize(Entity entity)
+    {
+        var tag = (PictureBox) entity.Tag;
+        tag.Size = LogicSize2Client(entity.Size);
+    }
+
+    private void OnOutOfArena(PongLogic logic)
+    {
+        /*Deixa o botão visivel*/
+        start.Visible = true;
+
+        /*Foca no botão para a barra não mexer*/
+        start.Focus();
+
+        /*Mensagem de derrota visivel*/
+        label2.Visible = true;
+
+        /*Deixa o botão de dificuldade visivel*/
+        buttondif.Visible = true;
+
+        /*Deixa o texto da dificuldade visivel*/
+        textodif.Visible = true;
+
+        /*Para o timer*/
+        meuTimer.Stop();
+    }
+
+    private void OnWin(PongLogic logic)
+    {
+        /*Deixa o botão visivel*/
+        start.Visible = true;
+
+        /*Foca no botão para a barra não mexer*/
+        start.Focus();
+
+        /*Mensagem de vitoria visivel*/
+        label1.Visible = true;
+
+        /*Deixa o botão de dificuldade visivel*/
+        buttondif.Visible = true;
+
+        /*Deixa o texto da dificuldade visivel*/
+        textodif.Visible = true;
+
+        /*Para o timer*/
+        meuTimer.Stop();
+    }
+
+    private void OnStop(PongLogic logic)
+    {
+        /*Para o timer*/
+        meuTimer.Stop();
+
+        /*deixa os comandos visiveis*/
+        label3.Visible = true;
+        label4.Visible = true;
+
+        /*Deixa o continuar visivel*/
+        button1.Visible = true;
+
+        /*Foca no botão para a barra não mexer*/
+        button1.Focus();
+    }
+
+    private void UpdateClient()
+    {
+        ComputeScale();
+
+        pbBar.Bounds = LogicBounds2Client(logic.bar.Bounds);
+        pbBall.Bounds = LogicBounds2Client(logic.ball.Bounds);
+        pbFloor.Bounds = LogicBounds2Client(logic.floor.Bounds);
+
+        pbBlock1.Bounds = LogicBounds2Client(logic.blocks[0].Bounds);
+        pbBlock2.Bounds = LogicBounds2Client(logic.blocks[1].Bounds);
+        pbBlock3.Bounds = LogicBounds2Client(logic.blocks[2].Bounds);
+        pbBlock4.Bounds = LogicBounds2Client(logic.blocks[3].Bounds);
+        pbBlock5.Bounds = LogicBounds2Client(logic.blocks[4].Bounds);
+        pbBlock6.Bounds = LogicBounds2Client(logic.blocks[5].Bounds);
+        pbBlock7.Bounds = LogicBounds2Client(logic.blocks[6].Bounds);
+        pbBlock8.Bounds = LogicBounds2Client(logic.blocks[7].Bounds);
+    }
 
     /* Timer executado*/
     void meuTimer_Tick(object sender, EventArgs e)
     {
-        /* Checa se os dois objetos se encostaram, como uma hitbox, esse verifica a bolinha e a barra*/
-        if (pictureBox1.Bounds.IntersectsWith(pictureBox3.Bounds))
-        {
-            a = 1;
-            if (x < 0)
-            {
-                /*Esses random pelo código é simplesmente para o jogo não ficar igual toda vez*/
-                Random numAleatorio = new Random();
-                int aleatorio = numAleatorio.Next(5, 10);
-                x = aleatorio - aleatorio - aleatorio;
-            }
-            else if (x > 0)
-            {
-                /*Esses random pelo código é simplesmente para o jogo não ficar igual toda vez*/
-                Random numAleatorio = new Random();
-                int aleatorio = numAleatorio.Next(5, 10);
-                x = aleatorio;
-            }
-
-        }
-
-        /*verifica hitbox e verifica se os inimigos estão ativos*/
-        if (pictureBox4.Visible == true || pictureBox5.Visible == true || pictureBox6.Visible == true || pictureBox7.Visible == true || pictureBox8.Visible == true || pictureBox9.Visible == true || pictureBox10.Visible == true || pictureBox11.Visible == true)
-        {
-            if (pictureBox3.Bounds.IntersectsWith(pictureBox4.Bounds) && pictureBox4.Visible == true)
-            {
-                pictureBox4.Visible = false;
-                a = 0;
-            }
-            else if (pictureBox3.Bounds.IntersectsWith(pictureBox5.Bounds) && pictureBox5.Visible == true)
-            {
-                pictureBox5.Visible = false;
-                a = 0;
-            }
-            else if (pictureBox3.Bounds.IntersectsWith(pictureBox6.Bounds) && pictureBox6.Visible == true)
-            {
-                pictureBox6.Visible = false;
-                a = 0;
-            }
-            else if (pictureBox3.Bounds.IntersectsWith(pictureBox7.Bounds) && pictureBox7.Visible == true)
-            {
-                pictureBox7.Visible = false;
-                a = 0;
-            }
-            else if (pictureBox3.Bounds.IntersectsWith(pictureBox8.Bounds) && pictureBox8.Visible == true)
-            {
-                pictureBox8.Visible = false;
-                a = 0;
-            }
-            else if (pictureBox3.Bounds.IntersectsWith(pictureBox9.Bounds) && pictureBox9.Visible == true)
-            {
-                pictureBox9.Visible = false;
-                a = 0;
-            }
-            else if (pictureBox3.Bounds.IntersectsWith(pictureBox10.Bounds) && pictureBox10.Visible == true)
-            {
-                pictureBox10.Visible = false;
-                a = 0;
-            }
-            else if (pictureBox3.Bounds.IntersectsWith(pictureBox11.Bounds) && pictureBox11.Visible == true)
-            {
-                pictureBox11.Visible = false;
-                a = 0;
-            }
-            if (pictureBox4.Visible == false && pictureBox5.Visible == false && pictureBox6.Visible == false && pictureBox7.Visible == false && pictureBox8.Visible == false && pictureBox9.Visible == false && pictureBox10.Visible == false && pictureBox11.Visible == false)
-            {
-
-                /*Deixa o botão visivel*/
-                start.Visible = true;
-
-                /*Foca no botão para a barra não mexer*/
-                start.Focus();
-
-                /*Mensagem de vitoria visivel*/
-                label1.Visible = true;
-
-                /*Deixa o botão de dificuldade visivel*/
-                buttondif.Visible = true;
-
-                /*Deixa o texto da dificuldade visivel*/
-                textodif.Visible = true;
-
-                /*Para o timer*/
-                meuTimer.Stop();
-            }
-
-        }
-
-        /*Se a localização da bolinha é menor que 519 no eixo Y e "a" é igual a 0, a bolinha desce em 5 no eixo X e 5 no eixo Y*/
-        if (a == 0)
-        {
-            /*Verifica se a bolinha não encostou nos cantos*/
-            if (pictureBox3.Location.X >= 0 && pictureBox3.Location.X <= 1325)
-            {
-                pictureBox3.Location = new Point(pictureBox3.Location.X + x, pictureBox3.Location.Y + y);
-            }
-
-            /* Caso ela encoste, ela vai para a outra direção*/
-            else
-            {
-                if (x > 0)
-                {
-                    /*transforma o número positivo em negativo*/
-                    x = x * -1;
-
-                    pictureBox3.Location = new Point(pictureBox3.Location.X + x, pictureBox3.Location.Y + 10);
-                }
-
-                else if (x < 0)
-                {
-                    /*Transforma o número negativo em positivo*/
-                    x = Math.Abs(x);
-
-                    pictureBox3.Location = new Point(pictureBox3.Location.X + x, pictureBox3.Location.Y + 10);
-                }
-            }
-
-        }
-
-        /* Verifica se a bolinha ecostou no final da arena, caso encoste, ela para o jogo*/
-        if (pictureBox2.Bounds.IntersectsWith(pictureBox3.Bounds))
-        {
-
-            /*Deixa o botão visivel*/
-            start.Visible = true;
-
-            /*Foca no botão para a barra não mexer*/
-            start.Focus();
-
-            /*Mensagem de derrota visivel*/
-            label2.Visible = true;
-
-            /*Deixa o botão de dificuldade visivel*/
-            buttondif.Visible = true;
-
-            /*Deixa o texto da dificuldade visivel*/
-            textodif.Visible = true;
-
-            /*Para o timer*/
-            meuTimer.Stop();
-        }
-
-        /*Mesma coisa do anterior só que ao contrario*/
-        if (pictureBox3.Location.Y > 0 && a == 1)
-        {
-            if (pictureBox3.Location.X >= 0 && pictureBox3.Location.X <= 1325)
-            {
-                pictureBox3.Location = new Point(pictureBox3.Location.X + x, pictureBox3.Location.Y - 10);
-            }
-            else
-            {
-                if (x > 0)
-                {
-                    x = x * -1; ;
-                    pictureBox3.Location = new Point(pictureBox3.Location.X + x, pictureBox3.Location.Y - 10);
-                }
-                else if (x < 0)
-                {
-                    x = Math.Abs(x);
-                    pictureBox3.Location = new Point(pictureBox3.Location.X + x, pictureBox3.Location.Y - 10);
-                }
-            }
-
-        }
-
-        else
-        {
-            a = 0;
-        }
-
-
-
-
+        logic.OnFrame();
+        UpdateClient();
     }
 
     /*Executa ações quando alguma tecla do teclado é pressionada*/
     private void Form1_KeyDown(object sender, KeyEventArgs e)
     {
-        /*Ao pressionar "A" ou seta para a esquerda*/
-        if (e.KeyCode == Keys.A || e.KeyCode == Keys.Left)
-        {
-            /*Se a barra não estiver no final da tela do lado esquerdo*/
-            if (pictureBox1.Location.X >= 0)
-            {
-                // Mova o objeto 50 pixels para a esquerda.
-                pictureBox1.Left -= 50;
-            }
-
-        }
-        /*Ao pressionar "D" ou seta para a direita*/
-        else if (e.KeyCode == Keys.D || e.KeyCode == Keys.Right)
-        {
-            /*Se a barra não estiver no final da tela do lado direito*/
-            if (pictureBox1.Location.X <= 1150)
-            {
-                // Mova o objeto 50 pixels para a direita.
-                pictureBox1.Left += 50;
-            }
-
-        }
-
-        /*Ao pressionar "P"*/
-        else if (e.KeyCode == Keys.P)
-        {
-            /*Para o timer*/
-            meuTimer.Stop();
-
-            /*deixa os comandos visiveis*/
-            label3.Visible = true;
-            label4.Visible = true;
-
-            /*Deixa o continuar visivel*/
-            button1.Visible = true;
-
-            /*Foca no botão para a barra não mexer*/
-            button1.Focus();
-        }
+        logic.OnKeyDown(e.KeyCode);
     }
 
     /* Botão de start*/
@@ -269,12 +170,12 @@ public partial class Form1 : Form
         textodif.Visible = false;
 
         /*localização da bolinha ao dar start no jogo*/
-        pictureBox3.Location = new Point(693, 163);
+        pbBall.Location = new Point(693, 163);
 
         /*localização da barra ao dar start no jogo*/
-        pictureBox1.Location = new Point(606, 685);
+        pbBar.Location = new Point(606, 685);
 
-        pictureBox2.Location = new Point(0, 722);
+        pbFloor.Location = new Point(0, 722);
 
         /*Botão fica invisivel ao iniciar o jogo*/
         start.Visible = false;
@@ -333,5 +234,63 @@ public partial class Form1 : Form
             meuTimer.Interval = 30;
             textodif.Text = "Facil";
         }
+    }
+
+    private void ComputeScale()
+    {
+        scaleX = ClientRectangle.Width / PongLogic.Width;
+        scaleY = ClientRectangle.Height / PongLogic.Height;
+    }
+
+    private PointF ClientPoint2Logic(PointF source)
+    {
+        return new PointF(source.X / scaleX, source.Y / scaleY);
+    }
+
+    private SizeF ClientSize2Logic(SizeF source)
+    {
+        return new SizeF(source.Width / scaleX, source.Height / scaleY);
+    }
+
+    private RectangleF ClientBounds2Logic(RectangleF source)
+    {
+        return new RectangleF(ClientPoint2Logic(source.Location), ClientSize2Logic(source.Size));
+    }
+
+    private Point LogicPoint2Client(PointF source)
+    {
+        return new Point((int) (scaleX * source.X), (int) (scaleY * source.Y));
+    }
+
+    private Size LogicSize2Client(SizeF source)
+    {
+        return new Size((int) (scaleX * source.Width), (int) (scaleY * source.Height));
+    }
+
+    private Rectangle LogicBounds2Client(RectangleF source)
+    {
+        return new Rectangle(LogicPoint2Client(source.Location), LogicSize2Client(source.Size));
+    }
+
+    private void Form1_Load(object sender, EventArgs e)
+    {
+        ComputeScale();
+
+        logic.bar.Bounds = ClientBounds2Logic(pbBar.Bounds);
+        logic.ball.Bounds = ClientBounds2Logic(pbBall.Bounds);
+        logic.floor.Bounds = ClientBounds2Logic(pbFloor.Bounds);
+
+        logic.blocks[0].Bounds = ClientBounds2Logic(pbBlock1.Bounds);
+        logic.blocks[1].Bounds = ClientBounds2Logic(pbBlock2.Bounds);
+        logic.blocks[2].Bounds = ClientBounds2Logic(pbBlock3.Bounds);
+        logic.blocks[3].Bounds = ClientBounds2Logic(pbBlock4.Bounds);
+        logic.blocks[4].Bounds = ClientBounds2Logic(pbBlock5.Bounds);
+        logic.blocks[5].Bounds = ClientBounds2Logic(pbBlock6.Bounds);
+        logic.blocks[6].Bounds = ClientBounds2Logic(pbBlock7.Bounds);
+        logic.blocks[7].Bounds = ClientBounds2Logic(pbBlock8.Bounds);
+    }
+
+    private void Form1_Resize(object sender, EventArgs e)
+    {
     }
 }

@@ -272,7 +272,9 @@ public partial class Form1 : Form
         pictureBox3.Location = new Point(693, 163);
 
         /*localização da barra ao dar start no jogo*/
-        pictureBox1.Location = new Point(593, 620);
+        pictureBox1.Location = new Point(606, 685);
+
+        pictureBox2.Location = new Point(0, 722);
 
         /*Botão fica invisivel ao iniciar o jogo*/
         start.Visible = false;
@@ -315,7 +317,7 @@ public partial class Form1 : Form
             meuTimer.Interval = 20;
             textodif.Text = "Normal";
         }
-            
+
         /*Dificuldade vai para o Dificil*/
         else if (textodif.Text == "Normal")
         {
